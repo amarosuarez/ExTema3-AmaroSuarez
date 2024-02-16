@@ -1,16 +1,40 @@
 package fecha;
 
+/**
+ * Clase que contiene métodos para comprobar fechas
+ * @author asuarez
+ * @version 1.0
+ */
 public class Fecha {
-	private int d; //d�a
-	private int m; //mes
-	private int a; //a�o
-
 	
+	/**
+	 * Atributo que obtiene el día
+	 */
+	private int d;
+	
+	/**
+	 * Atributo que obtiene el mes
+	 */
+	private int m;
+	
+	/**
+	 * Atributo que obtiene el año
+	 */
+	private int a; 
+
+	/**
+	 * Constructor vacío
+	 */
 	public Fecha() {
 
 	}
 
-	
+	/**
+	 * Constructor con parámetros dia, mes y anio
+	 * @param dia Obtiene el número del día
+	 * @param mes Obtiene el número del mes
+	 * @param anio Obtiene el número del año
+	 */
 	public Fecha(int dia, int mes, int anio) {
 		this.d = dia;
 		this.m = mes;
@@ -18,7 +42,10 @@ public class Fecha {
 	}
 
 	
-	
+	/**
+	 * Método que comprueba si la fecha es correcta
+	 * @return Devuelve true o false dependiendo de si la fecha es correcta
+	 */
 	public boolean fechaCorrecta() {
 		boolean diaCorrecto, mesCorrecto, anioCorrecto;
 		anioCorrecto = a > 0;
@@ -43,13 +70,18 @@ public class Fecha {
 		return diaCorrecto && mesCorrecto && anioCorrecto;
 	}
 
-	// M�todo esBisiesto. Solo lo usa fechaCorrecta, por eso es privado
+	/**
+	 * Método privado que comprueba si el año es bisiesto usando fechaCorrecta
+	 * @return Devuelve true o false dependiendo de si el año es bisiesto
+	 */
 	private boolean esBisiesto() {
 		boolean esBisiesto = (a % 4 == 0 && a % 100 != 0 || a % 400 == 0);
 		return esBisiesto;
 	}
 
-	// M�todo diaSiguiente
+	/**
+	 * Método que suma un día al día actual, comprobando si debe de cambiar de mes y de año
+	 */
 	public void diaSiguiente() {
 		d++;
 		if (!fechaCorrecta()) {
@@ -62,7 +94,9 @@ public class Fecha {
 		}
 	}
 
-	// M�todo toString
+	/**
+	 * Método que pasa la fecha a String
+	 */
 	public String toString() {
 		if (d < 10 && m < 10) {
 			return "0" + d + "-0" + m + "-" + a;
